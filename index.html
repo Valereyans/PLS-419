@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101c19">
+  <meta name="description" content="An interactive PLS 419 proposal for flood forecasting and preparedness in one Kazakhstan river reach.">
+  <title>Before the River Rises · PLS 419</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./replay.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">≋</span> Flood preparedness</a>
+      <nav aria-label="Project sections">
+        <a href="#problem">Problem</a><a href="#evidence">Evidence</a><a href="#research">Research</a><a href="#service">Proposal</a><a href="#replay">Replay</a><a href="#cost-title">Costs</a><a href="#transparency">AI statement</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">PLS 419 · Kazakhstan</p>
+          <h1 id="title">Before the<br>river rises<span>.</span></h1>
+          <p class="lede">Can a local flood service give emergency teams enough time to prepare? And when would an AI forecast earn its place?</p>
+          <div class="hero-actions"><a class="primary" href="#problem">Read the project</a><a class="replay-link" href="#replay">Run the flood replay</a></div>
+        </div>
+        <figure class="hero-figure">
+          <canvas id="river" width="680" height="500" aria-hidden="true"></canvas>
+          <div class="map-label upstream"><i></i>1 &nbsp; Upstream gauge</div>
+          <div class="map-label crossing"><i></i>2 &nbsp; Low crossing</div>
+          <div class="map-label settlement"><i></i>3 &nbsp; Settlement</div>
+          <figcaption>Illustrative river reach</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="chapter light" id="problem" aria-labelledby="problem-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">01 / The problem</p><h2 id="problem-title">When rivers rise, who has time to act?</h2></div>
+          <p>In spring 2024, flooding forced a large-scale emergency response across Kazakhstan. At the local level, a household’s ability to act on a warning can depend on transport, trusted contacts, and whether an access road is still open.</p>
+        </div>
+        <figure class="data-card impact">
+          <div class="impact-label"><p class="eyebrow">Kazakhstan · April–May 2024</p><strong>119,000</strong><p>people rescued and evacuated, including 44,400 children</p></div>
+          <div>
+            <div class="marks" id="people-marks" aria-hidden="true"></div>
+            <p class="key"><span><i class="dot child"></i> Children</span><span><i class="dot adult"></i> Remaining count</span><span>Each mark represents 1,000 people.</span></p>
+          </div>
+          <figcaption class="source">Source <a href="https://www.unicef.org/media/159976/file/ECAR-Humanitarian%20-SitRep-Mid-Year-2024.pdf">UNICEF midyear situation report</a></figcaption>
+        </figure>
+        <div class="reading-grid">
+          <article class="reading-block">
+            <h3>Scale and consequences</h3>
+            <p>Spring flooding is a recurring problem in Kazakhstan, especially in river basins where accumulated winter snow melts over a short period. The 2024 disaster demonstrated how geographically extensive the consequences can become. UNICEF reported emergency declarations in ten of seventeen regions. On 14 May, the government counted 12,908 flooded residential houses, and by 21 June it reported that over 120,000 people had been evacuated, with 3,952 still staying in evacuation centres. These are administrative snapshots taken at different times, with different definitions of affected people and housing. Together they establish the sustained disruption of homes and communities. <a class="citation" href="https://www.unicef.org/media/159976/file/ECAR-Humanitarian%20-SitRep-Mid-Year-2024.pdf">UNICEF, 2024</a> · <a class="citation" href="https://primeminister.kz/en/news/prime-minister-we-must-get-people-affected-back-to-normal-life-as-quickly-as-possible-28289">Government, May 2024</a> · <a class="citation" href="https://primeminister.kz/en/news/all-citizens-to-be-moved-into-new-housing-before-cold-weather-olzhas-bektenov-on-floods-consequences-elimination-28671">Government, June 2024</a></p>
+            <p>The national emergency prompted investment in both infrastructure and forecasting. In 2025, the water ministry reported operating its Tasqyn modelling system across ten regions. UNDP also supported basin modelling, risk mapping and post-disaster planning. In May 2026, the water ministry reported that the spring flood period had passed normally and no emergencies occurred at hydraulic structures. Each season reflects different hydrological and institutional conditions. The 2024 and 2026 accounts cannot establish that flood frequency is falling or quantify the contribution of digital forecasting. They show that managing recurring risk remains a public responsibility even in quieter years. <a class="citation" href="https://www.gov.kz/org/water/press/news/details/1028897?lang=ru">Water ministry, 2025</a> · <a class="citation" href="https://www.undp.org/kazakhstan/stories/transforming-water-management-kazakhstan-core-investment-resilience">UNDP</a> · <a class="citation" href="https://primeminister.kz/en/news/significant-volumes-of-meltwater-released-into-limans-and-lake-systems-ministry-of-water-resources-and-irrigation-31373">Government, May 2026</a></p>
+          </article>
+          <article class="reading-block">
+            <h3>Who is especially exposed?</h3>
+            <p>Flood risk depends on where people live and on their ability to avoid harm. A family with a car, flexible working hours and relatives outside a flood zone has different options from a household dependent on public transport or needing assistance to move a disabled family member. Rural settlements can face isolation when a crossing becomes unusable. Housing, agricultural livelihoods, livestock, schools and access to health services can all be disrupted. A World Bank assessment identifies flooding as a major threat to economic assets and discusses the particular vulnerability of households with limited resources and mobility. <a class="citation" href="https://documents1.worldbank.org/curated/en/099121024150515312/pdf/P501104-791e5cc5-12d2-4e7c-9b3d-6b0aecd7cc53.pdf">World Bank, 2024</a></p>
+            <h3>Where the proposal starts</h3>
+            <p>This project focuses on seasonal river flooding along one defined reach and the settlements that depend on it. The Uba in East Kazakhstan and the Esil (Ishim) system in northern Kazakhstan are research candidates. The choice requires usable records, documented exposure, and a local agency able to participate. The pilot would address preparation for elevated river levels over days. Flash floods, failures of hydraulic structures and ice-jam events require specialist treatment beyond the initial model's scope. The project is a design for evaluation, and no community or agency has yet been enrolled.</p>
+            <p>Agencies distribute information, allocate transport and equipment, and decide when to mobilise. Flood preparedness is therefore a question about access to state capacity and the distribution of public protection, including where households cannot organise their own response.</p>
+          </article>
+        </div>
+        <p class="research-question"><strong>Social-science research question</strong> Under what conditions could an AI-supported local flood-preparedness service improve timely, equitable action in Kazakhstan, and would its additional benefits justify its costs?</p>
+      </div>
+    </section>
+
+    <section class="chapter paper" id="evidence" aria-labelledby="evidence-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">02 / Background &amp; data</p><h2 id="evidence-title">What can we measure?</h2></div>
+          <p>Kazakhstan already has Kazhydromet forecasts and the Tasqyn system. Two published records illustrate what a local pilot could build on, and which questions still need local evidence.</p>
+        </div>
+        <div class="evidence-grid">
+          <figure class="data-card evidence-card">
+            <p class="eyebrow">Tasqyn · 2025 flood season</p>
+            <h3><strong>9 of 16</strong> flooded settlements</h3>
+            <div class="settlement-marks" aria-hidden="true" id="tasqyn-marks"></div>
+            <p class="key settlement-key"><span><i class="dot child"></i> Forecast reported (9)</span><span><i class="dot forecast-missing"></i> No forecast reported (7)</span></p>
+            <figcaption><p>The water ministry reported forecasts for nine of the 16 settlements that flooded in Akmola and North Kazakhstan regions. This group covers places that flooded. The release leaves false alarms, lead time, and response completion open.</p><p class="source">Original graphic from <a href="https://www.gov.kz/org/water/press/news/details/1028897?lang=ru">Ministry of Water Resources and Irrigation, July 2025</a></p></figcaption>
+          </figure>
+          <figure class="data-card evidence-card">
+            <p class="eyebrow">Uba River · published study</p>
+            <h3><strong>1995–2020</strong> daily discharge</h3>
+            <div class="year-line" aria-hidden="true"><div></div><span>1995</span><span class="year-flag">2014</span><span>2020</span></div>
+            <figcaption><p>Researchers used discharge records for this period, focusing on November to May, and flagged a possible resolution problem in 2014. Warning receipt, transport, and road access require separate records.</p><p class="source">Original graphic from <a href="https://www.mdpi.com/2306-5729/10/8/122">Uba study, 2025</a> · <a href="https://www.kazhydromet.kz/ru/post/2045">Kazhydromet archive</a></p></figcaption>
+          </figure>
+        </div>
+        <div class="reading-grid">
+          <article class="reading-block">
+            <h3>Physical and administrative records</h3>
+            <p>Kazhydromet maintains hydrological observations, including discharge, water level, ice conditions and snow on ice. When it announced its electronic database in January 2023, it reported observations starting in 1995 and a monitoring network of 367 posts covering 208 watercourses and 27 lakes or reservoirs. The network changed over time. Archive availability is promising, but it tells us little about whether a particular gauge worked during the largest floods or whether its records are sufficiently frequent for this project. Snow, precipitation and soil information from meteorological products can complement gauges. ERA5-Land provides historical model-based reconstructions of land conditions, which should be kept distinct from weather forecasts that would have been available at the time. <a class="citation" href="https://www.kazhydromet.kz/ru/post/2045">Kazhydromet, 2023</a> · <a class="citation" href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land?tab=overview">Copernicus</a></p>
+            <p>The Ministry of Water Resources and Irrigation collects reservoir information and uses river forecasts, planned releases, digital elevation and bathymetric data in Tasqyn. Emergency services and local governments document endangered settlements, evacuations, damage and available resources. The pilot needs approved access, including forecasts for settlements that escaped flooding and records of when forecasts reached local staff.</p>
+          </article>
+          <article class="reading-block">
+            <h3>People, infrastructure and exposure</h3>
+            <p>The Bureau of National Statistics (BNS) provides population, household and socioeconomic data. Its indicators help describe the potential vulnerability of populations, while local road, housing and facility inventories are needed to understand specific consequences of rising rivers. The 2024 MICS household survey, conducted by the BNS with UNICEF support, reports information on communication equipment and connectivity. World Bank risk assessments and UNDP programmes provide broader hazard, damage and institutional evidence that can guide priorities. These sources differ in purpose and geographic resolution, and must be interpreted accordingly. <a class="citation" href="https://stat.gov.kz/en/news/kazakhstan-presents-results-of-the-multiple-indicator-cluster-survey-mics/">BNS, 2025</a> · <a class="citation" href="https://documents1.worldbank.org/curated/en/099121024150515312/pdf/P501104-791e5cc5-12d2-4e7c-9b3d-6b0aecd7cc53.pdf">World Bank</a> · <a class="citation" href="https://www.undp.org/kazakhstan/projects/flood-control-using-integrated-dam-management-system">UNDP</a></p>
+            <p>The BNS estimates that 5.0% of Kazakhstan's population had incomes below the subsistence threshold in 2024. Such statistics help contextualise the affordability of evacuation, but cannot establish income or mobility among exposed households in a village. Joining socioeconomic information to very detailed hazard maps could also reveal sensitive information about residents in small settlements. <a class="citation" href="https://stat.gov.kz/upload/iblock/e0d/8q7rweobieilktqexm4294nk9fw1m3aq/B-22-17-%D0%93%20%282024%29.pdf">BNS income differentiation, 2024</a></p>
+          </article>
+        </div>
+        <figure class="data-card access-figure">
+          <div><p class="eyebrow">Kazakhstan · MICS 2024</p><h3>Could a digital warning reach everyone?</h3><p class="access-description">Share of households reporting internet access at home.</p></div>
+          <div class="bar-plot" aria-label="Home internet access, urban 95.2 percent and rural 94.2 percent">
+            <div class="bar-label"><span>Urban</span><strong>95.2%</strong></div><div class="bar-track"><div class="data-fill" style="--share: 95.2%"></div></div>
+            <div class="bar-label"><span>Rural</span><strong>94.2%</strong></div><div class="bar-track"><div class="data-fill rural" style="--share: 94.2%"></div></div>
+            <div class="bar-axis" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+          </div>
+          <figcaption class="source">Original graphic from <a href="https://stat.gov.kz/upload/medialibrary/40a/bqc5xe66p4fvfq8i2x8zpip3pg46ptd4/MICS7KAZ%20SFR%2020251103%20EN%20v2.pdf">BNS and UNICEF, MICS 2024, Table LN.6.1, p. 198</a>. The unfilled portions represent households without reported home internet access.</figcaption>
+        </figure>
+        <div class="reading-grid">
+          <article class="reading-block"><h3>What the numbers leave out</h3><p>The chart shows high reported connectivity in both areas and a difference of only one percentage point. A digital channel could reach many households, yet a household connection is no guarantee of an accessible warning or working service during an emergency. The survey was not designed to record warning delivery during a flood. The people who require assistance may also include people temporarily away from their registered address, inhabitants of seasonal properties, and children whose phone access depends on adults. Local officials and community organisations would therefore need to test message receipt, understanding and realistic access to transport.</p></article>
+          <article class="reading-block"><h3>The evidence we still need</h3><p>The pilot must audit the selected station records, resolve inconsistent readings and reconstruct complete flood seasons including quiet days. It also needs dated operational logs recording preparation, blocked actions and the timing of official messages. Published damage totals and estimates of potential losses make the seriousness of the problem visible. Neither directly measures preventable harm attributable to a particular forecasting system. Maintaining this distinction helps prevent a speculative calculation of lives or property saved. Missing data should remain explicitly unknown, and inaccessible local records must limit the conclusions of the project.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter light" id="research" aria-labelledby="research-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">03 / Current state of research</p><h2 id="research-title">From river forecasts to local decisions</h2></div>
+          <p>Researchers approach flooding through physical processes, probability and exposure, data-driven forecasts, and human response. Each approach captures a different part of the problem.</p>
+        </div>
+        <div class="research-grid">
+          <article><div class="study-line line-local" aria-hidden="true"></div><details open><summary>Physical hydrology and changing climate</summary>
+            <p>Nurbatsina et al. (2025) used the Soil and Water Integrated Model to study the Zhabay River, calibrating the model with historical observations at Atbasar. Their climate scenarios suggest substantially larger peak discharges by the middle of the century. This is useful evidence for adaptive infrastructure and planning. The estimates remain conditional on the climate models and emissions scenarios, and their long-term time scale cannot establish the accuracy of a forecast for next Wednesday.</p>
+            <p>Ongdas et al. (2025) reviewed the Yesil basin using local and international studies, recorded measurements and gridded environmental datasets. They identify the concentration of runoff in the spring snowmelt period and the strategic significance of the transboundary river. Together, the two studies emphasise processes that a forecasting model must be able to represent: snow storage and melting, changing seasonal conditions and the effects of water management. A historical statistical relationship can become less reliable as these processes change. This supports testing forecasts against physically informed guidance and evaluating unusual seasons separately.</p>
+            <p class="source"><a href="https://www.mdpi.com/2306-5338/12/2/35">Nurbatsina et al., Hydrology (2025)</a> · <a href="https://link.springer.com/article/10.1007/s12665-025-12500-0">Ongdas et al., Environmental Earth Sciences (2025)</a></p></details></article>
+          <article><div class="study-line line-exposure" aria-hidden="true"></div><details open><summary>Risk, exposure and consequences</summary>
+            <p>Ceresa et al. (2025) constructed a probabilistic flood-risk assessment across five Central Asian countries using a consistent hazard and exposure methodology. The study identifies substantial expected damage relative to exposed asset value in Kazakhstan and Tajikistan, with transport and agriculture particularly vulnerable across the region. It also finds geographically varying effects of future climate conditions. This type of study allows governments to compare risks and direct investment across places whose historical disaster records may be incomplete.</p>
+            <p>An expected annual loss is a modelled average across possible events. A region with higher asset value can show a larger potential financial loss even when residents elsewhere have fewer options for protection. Emergency resource allocation therefore needs information about people, access and assistance. At village level, locally approved maps of roads, vulnerable infrastructure and alternatives can complement regional risk modelling.</p>
+            <p class="source"><a href="https://nhess.copernicus.org/articles/25/403/2025/">Ceresa et al., Natural Hazards and Earth System Sciences (2025)</a></p></details></article>
+          <article><div class="study-line line-prediction" aria-hidden="true"></div><details open><summary>AI forecasts versus existing methods</summary>
+            <p>Rakhymbek et al. (2025) trained long short-term memory neural networks on spatial weather inputs derived from ERA5-Land and historical river discharge. Their Uba case found stronger overall performance with the full spatial grid than with simplified inputs. Their 2014 results also illustrate how errors in observations can undermine apparent forecast skill. The study supports local experimentation, while its retrospective design leaves operational availability of inputs and forecast performance against actual official guidance to be established.</p>
+            <p>Nearing et al. (2024) found that a global AI system generally performed at least as reliably at five-day lead time for extreme river events in ungauged catchments as a leading global conventional system did at zero lead time. This is strong evidence for exploring data-driven prediction.</p>
+            <p>The choice of comparison matters considerably. Tran et al. (2026) compared machine learning with operational forecasts from the California Nevada River Forecast Center, which incorporate expert adjustments. The operational service performed better at most locations at longer horizons. These results are consistent with AI being useful in some contexts and expert-guided forecasting retaining significant value in others. The Kazakhstan pilot should benchmark its model against actual local forecasting practice, including human adjustments, alongside simple statistical baselines.</p>
+            <p class="source"><a href="https://www.mdpi.com/2306-5729/10/8/122">Rakhymbek et al., Data (2025)</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/38509278/">Nearing et al., Nature (2024)</a> · <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025GL118317">Tran et al., Geophysical Research Letters (2026)</a></p></details></article>
+          <article><div class="study-line line-response" aria-hidden="true"></div><details open><summary>Warnings, behaviour and practical response</summary>
+            <p>Thieken et al. (2023) investigated how affected residents in Germany received, interpreted and acted on warnings during the July 2021 floods. In two surveyed states, around a third of respondents reported receiving no warning. Among respondents who were warned, many underestimated the potential severity or reported uncertainty about appropriate protective behaviour. The study associates information content and warning source with knowledge of how to respond. Its online survey and different institutional setting limit direct transfer of the percentages to Kazakhstan, but the method suggests what a local evaluation could measure.</p>
+            <p>Operational work by Nevo et al. (2022) likewise draws attention to whether warnings communicate meaningful information in a resident's language. Between generating a useful forecast and achieving protection sit several human and organisational steps. Different disciplines measure different outcomes, including forecast errors, potential economic losses, warning reach and reported behaviour. Few of the studies discussed here evaluate all those outcomes together in a Kazakhstan community, and none establishes the incremental value of our proposed workflow.</p>
+            <p class="source"><a href="https://nhess.copernicus.org/articles/23/973/2023/">Thieken et al., Natural Hazards and Earth System Sciences (2023)</a> · <a href="https://hess.copernicus.org/articles/26/4013/2022/">Nevo et al., Hydrology and Earth System Sciences (2022)</a></p></details></article>
+        </div>
+        <p class="research-question"><strong>The gap</strong> Can earlier information become verified local preparation? The project proposes to evaluate whether better shared procedures improve response and whether an additional AI forecast changes decisions enough to justify its introduction. The review points toward a mixed technical and social-science evaluation, combining forecast verification and evidence from staff and affected residents.</p>
+      </div>
+    </section>
+
+    <section class="chapter service" id="service" aria-labelledby="service-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">04 / The AI-assisted solution and its costs</p><h2 id="service-title">A forecast starts the work.</h2></div>
+          <p>Test one river reach. A hydrologist reviews the guidance, an emergency coordinator authorizes preparation, and the local team verifies that tasks are done.</p>
+        </div>
+        <ol class="workflow" aria-label="Proposed preparedness workflow">
+          <li><span aria-hidden="true">◔</span><b>Observe</b><small>Check readings and their age</small></li>
+          <li><span aria-hidden="true">≈</span><b>Review</b><small>Compare guidance and uncertainty</small></li>
+          <li><span aria-hidden="true">⊞</span><b>Prepare</b><small>Authorize and assign tasks</small></li>
+          <li><span aria-hidden="true">✓</span><b>Verify</b><small>Confirm, escalate, or revise</small></li>
+        </ol>
+        <div class="reading-grid service-reading">
+          <article class="reading-block"><h3>Architecture and forecasting</h3><p>The supplementary system would run as a shared staff-facing application integrated with available official data, preferably reusing existing infrastructure. A simple statistical model and a tree-based or recurrent neural network would be trained on historical river readings, upstream conditions, weather, and snow and soil variables. They would predict daily discharge or water level at a named gauge at one-, three- and five-day horizons. Separate validation would assess which input and model combinations justify their cost. Uncertainty ranges would be presented only after calibration; stale data and conflicting predictions would trigger review.</p><p>Staff would translate the forecast into implications for roads and facilities using verified observations and approved inundation scenarios. A discharge estimate alone cannot produce a reliable street-level flood map. The service would record the assumptions and the time of each forecast. The design follows the four connected functions of risk knowledge, forecasting, communication and response in the <a class="citation" href="https://wmo.int/resources/wmo-bulletin/wmo-bulletin-vol-72-1-2023/overview-of-early-warnings-all-executive-action-plan-2023-2027">WMO Early Warnings for All plan (2023)</a>.</p></article>
+          <article class="reading-block"><h3>Institutions and delivery</h3><p>Before the season, the prospective Kazhydromet team, territorial emergency department and local executive body would agree on resources, thresholds, roles and escalation. A duty hydrologist would review forecasts; an authorised emergency coordinator would approve preparations and assign tasks such as checking transport. Staff would record completion or obstacles. Residents would receive approved messages through existing bilingual warning channels, with phone calls and local outreach where necessary. A manual task sheet and official guidance would remain available during outages. A service audit and formal agreements would determine whether this can be incorporated into Tasqyn or another existing application.</p></article>
+        </div>
+
+        <section class="replay" id="replay" aria-labelledby="replay-title">
+          <div class="replay-head"><div><p class="eyebrow demo">Fictional exercise · no live data</p><h3 id="replay-title">The low crossing</h3></div>
+          <fieldset class="modes"><legend>Guidance available</legend><label><input type="radio" name="mode" value="official" checked><span>Official only</span></label><label><input type="radio" name="mode" value="ai"><span>Official + AI</span></label></fieldset></div>
+          <p class="replay-intro">Advance one day at a time. Switch guidance at any step to see how the same proposed preparedness workflow might respond. The crossing review level is illustrative.</p>
+          <div class="replay-layout">
+            <div class="chart-card">
+              <div class="chart-heading"><strong>River stage</strong><span id="chart-time">Monday</span></div>
+              <canvas id="forecast" width="640" height="300" role="img" aria-label="Example river-stage forecast. A text description appears below the chart."></canvas>
+              <ul class="chart-key" aria-label="Chart legend"><li><i class="observed"></i>Observed</li><li><i class="official"></i>Official forecast</li><li id="ai-key" hidden><i class="ai"></i>AI forecast</li><li><i class="trigger"></i>Crossing review level</li></ul>
+              <p class="chart-description" id="chart-description"></p>
+            </div>
+            <div class="decision" aria-live="polite" aria-atomic="true">
+              <p class="eyebrow" id="stage-label">Monday · Compare forecasts</p>
+              <h4 id="decision-title">Initial forecast review</h4>
+              <p id="decision-detail"></p>
+              <div class="task-status"><strong id="task-label">Task</strong><p id="task-detail"></p></div>
+            </div>
+          </div>
+          <div class="transport">
+            <button type="button" id="prev">Previous day</button>
+            <div class="step-dots" role="group" aria-label="Choose a replay day">
+              <button type="button" data-step="0" aria-label="Monday" aria-current="step"></button><button type="button" data-step="1" aria-label="Tuesday"></button><button type="button" data-step="2" aria-label="Wednesday"></button><button type="button" data-step="3" aria-label="Thursday"></button>
+            </div>
+            <button type="button" id="next">Next day</button>
+          </div>
+          <noscript><p>On Monday, the AI forecast would prompt a transport check. On Tuesday, official guidance would trigger preparation in both versions. On Thursday, the teams keep the alternate route in use pending a field check. Enable JavaScript to explore each day and chart.</p></noscript>
+          <details class="note replay-note"><summary>What if Monday’s AI forecast were wrong?</summary><p>The vehicle check would still use staff time. Repeated false alarms could crowd out other work or erode trust. A pilot must count these costs and measure additional useful preparation across many events, including days when flooding never materializes.</p></details>
+        </section>
+
+        <div class="pilot" aria-labelledby="cases-title">
+          <p class="eyebrow">Operational precedents</p><h3 id="cases-title">What other teams actually deployed</h3>
+          <div class="test-grid cases">
+            <article><p class="eyebrow">India and Bangladesh · river flooding</p><h4>More than 100 million alerts</h4><p>Google's operational system combined gauged river-level forecasts and inundation mapping with public notification during the 2021 monsoon. Nevo et al. reported using an LSTM model at 165 of 167 target gauges after comparisons with a linear model. The alert total documents operational scale, including repeated alerts, and does not establish unique recipients or losses prevented. For Kazakhstan, this case demonstrates the feasibility of connecting machine-learning forecasts to a warning service and the value of locally understandable messages. <a class="citation" href="https://hess.copernicus.org/articles/26/4013/2022/">Nevo et al. (2022)</a></p></article>
+            <article><p class="eyebrow">New Taipei City · urban flooding</p><h4>30–60 minutes earlier</h4><p>Yang et al. describe a deployed municipal platform integrating sensors, AI-based classification of camera images, and adaptive pump operations. After approximately three years of implementation, the authors report that data collection and expert assessment could be completed 30–60 minutes earlier. The improvement reflects the integrated service, with no isolated estimate of AI's contribution. Urban drainage differs from Kazakhstan's seasonal river flooding. The transferable idea is linking monitored conditions to decisions and operational capacity within a common interface. <a class="citation" href="https://www.mdpi.com/2073-4441/17/15/2269">Yang et al. (2025)</a></p></article>
+          </div>
+        </div>
+
+        <div class="pilot" aria-labelledby="pilot-title">
+          <p class="eyebrow">What would count as success?</p><h3 id="pilot-title">Test the service. Then test the AI.</h3>
+          <div class="test-grid">
+            <article><p class="eyebrow">Preparedness</p><h4>Current practice vs. a shared workflow</h4><p>Hold official guidance fixed. Compare the time taken to confirm transport, issue approved messages and resolve blocked tasks. Use drills and resident feedback to assess coverage across settlements and among people requiring assistance. Track additional work caused by false alarms.</p></article>
+            <article><p class="eyebrow">The model</p><h4>Same workflow, with and without AI guidance</h4><p>Reconstruct whole historical seasons, using only inputs available at each issue time and official forecasts where archived. Then run in shadow mode without influencing warnings, followed by independent review. Compare peak errors, missed dangerous events, false alarms and usable lead time. A supervised pilot can follow only if pre-agreed performance and operational requirements are met.</p></article>
+          </div>
+        </div>
+
+        <div class="cost" aria-labelledby="cost-title">
+          <p class="eyebrow">The bill</p><h3 id="cost-title">What the pilot would have to carry</h3>
+          <figure class="estimate-figure">
+            <div><p class="eyebrow demo">Illustrative planning estimate · ₸ million</p><h4>First year</h4><div class="budget-total">₸34.4m</div><p>₸23.4m for the shared workflow, plus ₸11m to add AI.</p></div>
+            <div class="budget-plot" aria-label="First-year setup and annual operations for workflow and supplementary AI">
+              <div class="bar-label"><span>Setup</span><strong>₸14m</strong></div><div class="budget-track"><div class="budget-base" style="--share:44.117647%">9</div><div class="budget-ai" style="--share:24.509804%">5</div></div>
+              <div class="bar-label"><span>Annual operations</span><strong>₸20.4m</strong></div><div class="budget-track"><div class="budget-base" style="--share:70.588235%">14.4</div><div class="budget-ai" style="--share:29.411765%">6</div></div>
+              <div class="bar-axis" aria-hidden="true"><span>0</span><span>₸10.2m</span><span>₸20.4m</span></div><div class="budget-key"><span><i class="dot base-dot"></i> Shared workflow</span><span><i class="dot ai-dot"></i> Additional AI</span></div>
+            </div><figcaption class="source">Scenario for one reach using existing agencies and gauges. Amounts are planning assumptions, in tenge, before procurement and actual resource allocation.</figcaption>
+          </figure>
+          <div class="cost-grid expanded-cost">
+            <article class="reading-block"><h4>Environmental impact</h4><p>Assume shared hosting accounts for 70 W continuously, about 613 kWh of annual IT energy. Additional AI uses 100 training hours at 350 W and two hours daily at 200 W, about 181 kWh. At an assumed facility-to-IT electricity ratio of 1.4, total annual electricity is approximately 1,112 kWh, including 253 kWh for AI. Ember reports 85% fossil electricity generation in Kazakhstan in 2025. An illustrative emissions sensitivity of 0.6–0.9 kg CO₂e/kWh yields 0.67–1.00 tonnes annually, of which AI accounts for 0.15–0.23 tonnes. With facility cooling water use assumed at 0.5–1.5 L per IT kWh, direct annual consumption is 397–1,191 litres (91–272 attributable to AI). These are scenario factors; actual hosting, cooling and grid data would replace them. The IEA highlights additional water consumption in electricity generation and trade-offs between cooling water and energy efficiency. Equipment manufacturing impacts also lie outside the estimate. <a class="citation" href="https://ember-energy.org/countries-and-regions/kazakhstan/">Ember, 2026</a> · <a class="citation" href="https://www.iea.org/reports/powering-artificial-intelligence/executive-summary">IEA, Powering Artificial Intelligence (2026)</a></p></article>
+            <article class="reading-block"><h4>Economic costs</h4><p>Workflow setup includes ₸4.8m for six staff-months of integration, ₸2m for equipment and ₸2.2m for training and maps. Annual operations allocate ₸6.6m to coordination, ₸4.8m to half-time technical support and ₸3m to drills, communications and hosting. AI adds ₸5m upfront (₸3.2m modelling, ₸1.8m validation) and ₸6m annually (₸4.8m half-time specialist and ₸1.2m operating costs). Monthly rates of ₸550,000–800,000 are illustrative total staffing costs informed by BNS 2025 wage averages of ₸656,257 in professional and technical activities and ₸834,522 in information and communication. The ₸34.4m first-year estimate varies from ₸25.8m to ₸43m under a ±25% sensitivity. Public agency budgets would pay; technology suppliers and contractors receive revenue, with profit margins unknown. The annual AI premium competes with other investments in emergency capacity. Actual response costs, new gauges and major infrastructure need separate funding. <a class="citation" href="https://stat.gov.kz/en/industries/labor%E2%80%93income/stat-wags/publications/509380/">BNS wages, 2025</a></p></article>
+            <article class="reading-block"><h4>Labour and hidden work</h4><p>Automated comparison and reporting might release routine analyst time, but staff would take on checking forecasts, correcting data, documenting decisions and handling outages. Field verification, bilingual messages, community feedback, duty coverage and software maintenance require funded work. The proposed half-time allocations presume shared personnel and would need a capacity audit; the budget assumes no job cuts. Local residents and volunteers should be compensated for substantive data-collection work.</p></article>
+            <article class="reading-block"><h4>Political and legal governance</h4><p>Centralised risk information could enable surveillance, opaque allocation or vendor dependency. Local agencies should control records, audit access, retain manual procedures and publish aggregate performance. Kazakhstan's AI Law of 17 November 2025, No. 230-VIII, requires owners to manage risks, ensure reliability and document their systems (Art. 15). A life-safety application warrants assessment under the high-risk criteria of Art. 17. Art. 18 requires ongoing risk review at least annually, and Art. 21 addresses transparency and synthetic content. Applying risk-based regulation, proportionality and accountability, the pilot would undergo impact assessment, independent review and public consultation. <a class="citation" href="https://adilet.zan.kz/eng/docs/Z2500000230">AI law (Әділет, unofficial English translation)</a> · <a class="citation" href="https://www.unesco.org/en/legal-affairs/recommendation-ethics-artificial-intelligence?hub=1063">UNESCO ethics recommendation, 2021</a></p></article>
+            <article class="reading-block"><h4>Data ethics and localisation</h4><p>Gauge readings and aggregate exposure are sufficient for forecasting. Any household support register would be a separate restricted system. Obtain appropriate permission or consent for identifiable reports and check statutory exceptions during emergencies. Kazakhstan's Personal Data Law requires storage in Kazakhstan (Art. 12) and regulates overseas transfers (Art. 16). Set access, purpose and retention limits, verify reports, enable corrections and protect people from reidentification in small settlements. <a class="citation" href="https://adilet.zan.kz/eng/docs/Z1300000094">Personal Data Law, 2013, as amended (unofficial English translation)</a></p></article>
+          </div>
+          <p class="verdict"><strong>Verdict · Conditional adoption</strong> Pilot the preparedness workflow where there is an identified gap. Test AI in shadow mode and retain it only if it improves decisions or demonstrably strengthens continuity while maintaining equitable coverage. If the AI forecast rarely changes preparation decisions, decline it and redirect the estimated ₸6m annual premium toward local staff or response equipment. Adoption requires reliable data, funded staffing, documented accountability and evidence that the benefits justify the added costs.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <aside class="transparency" id="transparency" aria-labelledby="transparency-title"><div class="wrap"><p class="eyebrow">Research process</p><h2 id="transparency-title">AI transparency statement</h2><div class="reading-block statement-text"><p>ChatGPT contributed to brainstorming possible issues, searching and comparing published evidence, developing the proposed workflow and evaluation, drafting the site narrative, and coding the illustrations and interactive replay. The student directed the choice of problem, questioned the justification for ideas, and steered the proposal toward both forecasting and institutional risk management. A visual prototype was retained and expanded after the student requested a substantive research narrative. The assumption that severe flooding alone demonstrates the need for AI was rejected, so the proposal makes adoption conditional on local evaluation.</p></div></div></aside>
+  <footer><div class="wrap footer"><span>Before the River Rises · PLS 419</span><a href="#top">Back to top</a></div></footer>
+</body>
+</html>
